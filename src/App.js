@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import './App.css'
 
 //const url = 'https://api.thecatapi.com/v1/images/search'
 
@@ -22,14 +23,14 @@ const App = () => {
 				})
 	}
 
-	const showDetails = (event) => {
-    setCats(event.target.value)
-  }
+	// const showDetails = (event) => {
+  //   setCats(event.target.value)
+  // }
 	
 	return (
-		<div>
+		<div className="cats">
 			<h1>Get cat images</h1>
-			<img src={cats} alt="cat" height="300px" width="250px"/>
+			<img src={cats} alt="cat" height="300px" width="250px" className="center"/>
 			<button onClick={haveCat}>Give me a new cat</button>
 		</div>
  	)
