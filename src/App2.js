@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import './App.css'
 
 const App = () => {
   const [ cats, setCats] = useState([]) 
@@ -45,26 +46,31 @@ const App = () => {
 		} else if (filteredCat.length === 1) {
 			const cat = filteredCat[0]
 			return(
-				<div>
+				<div className='cats'>
 					<h2>{cat.name}</h2>
-					<img src={cat.image.url} alt="breed" height="100px" />
+					<img src={cat.image.url} alt="breed" height="300px" width="250px" className="center"/>
 					<p>{cat.description}</p>
-					<p>---</p>
+					<hr
+    style={{
+      backgroundColor: 'red',
+      width: 800
+    }}
+  />
 					<p>{cat.temperament}</p>
 					<p>Adaptability: {cat.adaptability}/5</p>
 					<p>Affection Level: {cat.affection_level}/5</p>
 					<p>Child Friendly: {cat.child_friendly}/5</p>
 					<p>Energy Level: {cat.energy_level}/5</p>
 					<p>Intelligence: {cat.intelligence}/5</p>
-					<p>To learn more about {cat.name} click <a href={cat.wikipedia_url}>HERE</a></p>
+					<p>To learn more about {cat.name} cats, click <a href={cat.wikipedia_url}>HERE</a></p>
 				</div>
 			)
 		}
 	}
 
 	return(
-		<div>
-			Find cats <input value={search} onChange={searchCat} />
+		<div className="cats">
+			Search cat breeds <input value={search} onChange={searchCat} />
 			<FilterCat />
 		</div>
 	)
