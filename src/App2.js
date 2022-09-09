@@ -7,6 +7,7 @@ const App = () => {
   const [ search, setSearch ] = useState('')
   const [ selectedCat, setSelectedCat ] = useState('')
 
+	//fetch data from API
 	useEffect( () => {
     axios
       .get('https://api.thecatapi.com/v1/breeds')
@@ -15,6 +16,7 @@ const App = () => {
       })
   }, [])
 
+	//makes query case insensitive
 	const filteredCat = cats.filter(cat =>
 		cat.name.toLowerCase().includes(search.toLowerCase()))
 	const searchCat = (event) => {
@@ -24,6 +26,7 @@ const App = () => {
 		}
 	}
 
+	//event handler for showing breed details from search
 	const showDetails = (event) => {
 		setSearch(event.target.value)
 	}
@@ -31,6 +34,7 @@ const App = () => {
 	const FilterCat = () => {
 		if (search === "") {
 			return null
+			//displays possible breeds based on what the user types
 		} else if(filteredCat.length > 1) {
 			return(
 				filteredCat.map(cat => 
@@ -39,6 +43,7 @@ const App = () => {
 						<button value={cat.name} onClick={showDetails}>Show</button>
 					</div>)
 			)
+			//display info about a specific breed
 		} else if (filteredCat.length === 1) {
 			const cat = filteredCat[0]
 			return(
@@ -47,11 +52,11 @@ const App = () => {
 					<img src={cat.image.url} alt="breed" height="300px" width="250px" className="center"/>
 					<p>{cat.description}</p>
 					<hr
-    style={{
-      backgroundColor: 'red',
-      width: 800
-    }}
-  />
+    				style={{
+      				backgroundColor: 'red',
+      				width: 800
+    				}}
+  				/>
 					<p>{cat.temperament}</p>
 					<p>Adaptability: {cat.adaptability}/5</p>
 					<p>Affection Level: {cat.affection_level}/5</p>
