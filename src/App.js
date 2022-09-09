@@ -29,17 +29,17 @@ const App = () => {
 
 const Card = () => {
 	return (
-		<div className="card">
-			<div className="card__body">
-				<img src={cats} alt="cat" height="300px" width="250px" className="center"/>
+		<div className="card-container">
+			<div className="image-container">
+				<img src={cats} alt="cat" height="300px" width="250px"/>
 			</div>
-			<button className="card__btn" onClick={haveCat}>Give me a new cat</button>
+			<button className="card-btn" onClick={haveCat}>Give me a new cat</button>
 		</div>
 	)
 }
 
 	return (
-		<div className="cats">
+		<div className="App">
 			<h1>Get cat images</h1>
 			<Card />
 		</div>
