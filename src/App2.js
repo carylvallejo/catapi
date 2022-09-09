@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import './App.css'
+import './App2.css'
 
 const App = () => {
   const [ cats, setCats] = useState([]) 
@@ -40,30 +40,38 @@ const App = () => {
 				filteredCat.map(cat => 
 					<div key={cat.name}>
 						{cat.name}
-						<button value={cat.name} onClick={showDetails}>Show</button>
+						<button value={cat.name} onClick={showDetails} style={{marginLeft: 3}}> Show</button>
 					</div>)
 			)
 			//display info about a specific breed
 		} else if (filteredCat.length === 1) {
 			const cat = filteredCat[0]
 			return(
-				<div className='cats'>
-					<h2>{cat.name}</h2>
-					<img src={cat.image.url} alt="breed" height="300px" width="250px" className="center"/>
-					<p>{cat.description}</p>
-					<hr
-    				style={{
-      				backgroundColor: 'red',
-      				width: 800
-    				}}
-  				/>
-					<p>{cat.temperament}</p>
-					<p>Adaptability: {cat.adaptability}/5</p>
-					<p>Affection Level: {cat.affection_level}/5</p>
-					<p>Child Friendly: {cat.child_friendly}/5</p>
-					<p>Energy Level: {cat.energy_level}/5</p>
-					<p>Intelligence: {cat.intelligence}/5</p>
-					<p>To learn more about {cat.name} cats, click <a href={cat.wikipedia_url}>HERE</a></p>
+				<div className='card-container'>
+					<div className="card-title">
+						<h2>{cat.name}</h2>
+					</div>
+					<div className="image-container">
+					<img src={cat.image.url} alt="breed" height="300px" className="center"/>
+					</div>
+					<div className="card-content">
+						<div className="card-body">
+							<p>{cat.description}</p>
+							<hr
+    						style={{
+      						backgroundColor: 'red',
+      						width: 450
+    						}}
+  						/>
+							<p>{cat.temperament}</p>
+							<p>Adaptability: {cat.adaptability}/5</p>
+							<p>Affection Level: {cat.affection_level}/5</p>
+							<p>Child Friendly: {cat.child_friendly}/5</p>
+							<p>Energy Level: {cat.energy_level}/5</p>
+							<p>Intelligence: {cat.intelligence}/5</p>
+							<p>To learn more about {cat.name} cats, click <a href={cat.wikipedia_url}>HERE</a></p>
+						</div>
+					</div>
 				</div>
 			)
 		}
