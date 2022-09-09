@@ -21,34 +21,6 @@ button {
 	margin-top: 20px;
 }
 
-/* *,
-*::before,
-*::after {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
-
-body {
-	margin: 2rem;
-}
-
-.wrapper {
-	display:inline;
-	grid-template-columns: minmax(9rem, 12rem);
-	justify-content: center;
-}
-
-.card {
-	overflow:auto;
-	box-shadow: 0 2px 20px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	cursor: pointer;
-	transition: transform 200ms ease-in;
-} */
-
 .card-container {
 	width: 300px;
 	overflow: hidden;
