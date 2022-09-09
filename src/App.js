@@ -26,12 +26,22 @@ const App = () => {
 	// const showDetails = (event) => {
   //   setCats(event.target.value)
   // }
-	
+
+const Card = () => {
+	return (
+		<div className="card">
+			<div className="card__body">
+				<img src={cats} alt="cat" height="300px" width="250px" className="center"/>
+			</div>
+			<button className="card__btn" onClick={haveCat}>Give me a new cat</button>
+		</div>
+	)
+}
+
 	return (
 		<div className="cats">
 			<h1>Get cat images</h1>
-			<img src={cats} alt="cat" height="300px" width="250px" className="center"/>
-			<button onClick={haveCat}>Give me a new cat</button>
+			<Card />
 		</div>
  	)
 }
