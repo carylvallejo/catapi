@@ -31,17 +31,13 @@ const App = () => {
 	const FilterCat = () => {
 		if (search === "") {
 			return null
-		} else if(filteredCat.length <= 10 && filteredCat.length > 1) {
+		} else if(filteredCat.length > 1) {
 			return(
 				filteredCat.map(cat => 
 					<div key={cat.name}>
 						{cat.name}
 						<button value={cat.name} onClick={showDetails}>Show</button>
 					</div>)
-			)
-		} else if (filteredCat.length > 10) {
-			return(
-				<p>Too many matches, specify another filter</p>
 			)
 		} else if (filteredCat.length === 1) {
 			const cat = filteredCat[0]
