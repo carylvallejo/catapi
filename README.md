@@ -1,3 +1,13 @@
+# CatAPI Exercise
+App.js - generate random cat images from the API
+	issues: none
+App2.js - create a search filter for cat breeds
+	issues: none
+App3.js (unfinished) - create an upvote and downvote
+	issues: returns an undefined/NaN for the score of upvoted/downvoted images
+App4.js (unfinished) - favouriting cats
+	issues: was able to pull the id of the favourited cat (checked via console), however, failed to display the favourited cat on the favourites gallery
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
