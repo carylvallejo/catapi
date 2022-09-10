@@ -48,21 +48,20 @@ const App = () => {
 
 	const voteDecrease = ()  => {
     const copy = [...points]
-    // increment the value in position 2 by one
+    // decrement the value in position 2 by one
       copy[cats] -= 1   
 
       setPoints(copy)
   }
 	
 
-console.log('heh: ', points[cats])
+console.log('Score: ', points[cats])
 const Card = () => {
 	return (
 		<div className="card-container">
 			<div className="image-container">
 				<img src={cats} alt="cat" height="300px" width="250px"/>
 			</div>
-			<p>has {points[cats]} votes</p>
 			<Button handleClick={voteIncrease} text="Upvote" />
 			<Button handleClick={voteDecrease} text="Downvote" /> <br />
 			<button className="card-btn" onClick={haveCat}>Give me a new cat</button>
@@ -78,4 +77,4 @@ const Card = () => {
  	)
 }
 
-export default App;
+export default App; 

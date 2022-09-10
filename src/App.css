@@ -58,3 +58,12 @@ button {
 .card-btn:hover {
 	background: rgba(27, 256, 152, 0.1);
 }
+
+.image-grid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}

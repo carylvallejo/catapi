@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css'
-import { catOptions } from "./options"
-//revise catOptions
+import { catKey } from "./services/key"
+
+const api_key = process.env.REACT_APP_API_KEY
 
 const App = () => {
 	const [ cats, setCats ] = useState('') 
@@ -11,7 +12,7 @@ const App = () => {
 
 	const haveCat = () => {
 		axios
-				.get('https://api.thecatapi.com/v1/images/search', catOptions)
+				.get('https://api.thecatapi.com/v1/images/search', catKey)
 				.then(response => {
 					console.log('Cats: ', response.data[0].url)
 					//setCats(response[0].data)
@@ -29,16 +30,17 @@ const App = () => {
 
 	const getUserFavorite = () => {
 		axios
-			.get(`https://api.thecatapi.com/v1/favourites?sub_id=user1`, catOptions)
+			.get(`https://api.thecatapi.com/v1/favourites?sub_id=user1`, catKey)
 			.then((response) => setFavoriteCats(response.data))
 	}
 
+	//commented since it returns an error that prevents the page from running
 	// const getFavorite = () => {
-	// 	const favoriteCats = favoriteCats.map((favorite) => {
-	// 		axios
+	// 		favoriteCats.map((favorite) => {
+	// 			axios
 	// 			.get(`https://api.thecatapi.com/v1/images/${favorite.image_id}`, catOptions)
 	// 			.then((response) => setCatData((prev) => [...prev, response.data]))
-	// 	})
+	// 		})
 	// }
 
 	useEffect( () => {
@@ -56,7 +58,7 @@ const App = () => {
         'x-api-key': 'live_hzIykEDuSgcZWNPV0M72I31HIvfsZ0NwPOmKu6d7hFWg7Ph8Iraj6whE68uzu2aM',
 			}
 		}
-
+//change catId
 		const data = {
 			image_id: catId,
 			sub_id: "user1"
@@ -88,6 +90,12 @@ const Card = () => {
 			<Card />
 
 			<h1>FAVORITES</h1>
+			<div className="image-container">
+				<div>
+					<div>{cats.image_id}</div>
+					<img alt="cats" src={cats.url} height="300px" width="300px"/>
+				</div>
+			</div>
 		</div>
  	)
 }
