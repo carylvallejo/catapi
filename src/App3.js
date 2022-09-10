@@ -6,7 +6,7 @@ import './App.css'
 const App = () => {
 	const [ cat, setCat] = useState('')
 	const [ cats, setCats ] = useState(0) 
-  const [points, setPoints] = useState(new Array(cat.length).fill(0))
+  const [points, setPoints] = useState(new Array(cat).fill(0))
 
 	useEffect( () => {
 		haveCat()
