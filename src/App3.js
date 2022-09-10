@@ -2,30 +2,30 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css'
 
-//selected = cats
+//selected cat = cats
 const App = () => {
 	const [ cat, setCat] = useState('')
 	const [ cats, setCats ] = useState(0) 
-	//const [selected, setSelected] = useState(0)
   const [points, setPoints] = useState(new Array(cat.length).fill(0))
 
-		useEffect( () => {
-			haveCat()
-		}, [])
+	useEffect( () => {
+		haveCat()
+	}, [])
 
+	//fetches data from the API
 	const haveCat = () => {
 		axios
-				.get('https://api.thecatapi.com/v1/images/search?')
-				.then(response => {
-					console.log('Cats: ', response.data[0].url)
-					//setCats(response[0].data)
-					const cats = response.data[0].url
-					const cat = response.data
-					console.log('Catsii: ',cat)
-					//const catId = response.data[0].id
-					//console.log(cat.length)
-					setCats(cats)
-				})
+			.get('https://api.thecatapi.com/v1/images/search?')
+			.then(response => {
+			console.log('Cats: ', response.data[0].url)
+			//setCats(response[0].data)
+			const cats = response.data[0].url
+			const cat = response.data
+			console.log('Cat data: ',cat)
+			//const catId = response.data[0].id
+			setCats(cats)
+		})
+		.catch((error) => console.error("error"))
 	}
 
 	const Button = ({handleClick, text}) => (
@@ -33,10 +33,6 @@ const App = () => {
       {text}
     </button>
   )
-
-	// const showDetails = (event) => {
-  //   setCats(event.target.value)
-  // }
 
 	const voteIncrease = ()  => {
     const copy = [...points]

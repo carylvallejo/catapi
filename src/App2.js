@@ -34,7 +34,7 @@ const App = () => {
 	const FilterCat = () => {
 		if (search === "") {
 			return null
-			//displays possible breeds based on what the user types
+		//displays possible breeds based on what the user types
 		} else if(filteredCat.length > 1) {
 			return(
 				filteredCat.map(cat => 
