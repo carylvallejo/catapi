@@ -6,10 +6,8 @@ import { catOptions } from "./options"
 
 const App = () => {
 	const [ cats, setCats ] = useState('') 
-
-		useEffect( () => {
-			haveCat()
-		}, [])
+	const [favoriteCats, setFavoriteCats] = useState('')
+	const [catData, setCatData] = useState([])
 
 	const haveCat = () => {
 		axios
@@ -28,6 +26,26 @@ const App = () => {
 		event.preventDefault()
 		haveCat()
 	}
+
+	const getUserFavorite = () => {
+		axios
+			.get(`https://api.thecatapi.com/v1/favourites?sub_id=user1`, catOptions)
+			.then((response) => setFavoriteCats(response.data))
+	}
+
+	// const getFavorite = () => {
+	// 	const favoriteCats = favoriteCats.map((favorite) => {
+	// 		axios
+	// 			.get(`https://api.thecatapi.com/v1/images/${favorite.image_id}`, catOptions)
+	// 			.then((response) => setCatData((prev) => [...prev, response.data]))
+	// 	})
+	// }
+
+	useEffect( () => {
+		haveCat();
+		getUserFavorite();
+		//getFavorite()
+	}, [])
 
 	const addFave = (event, catId) => {
 		event.preventDefault()
@@ -53,7 +71,6 @@ const App = () => {
 
 	
 const Card = () => {
-	const url = `http:localhost:3000/favorites`
 	return (
 		<div className="card-container">
 			<div className="image-container">
